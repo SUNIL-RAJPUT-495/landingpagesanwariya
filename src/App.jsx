@@ -36,7 +36,7 @@ export default function App() {
   const handleInstallApp = async (source) => {
     if (deferredPrompt) {
       try {
-        deferredPrompt.prompt();
+        await deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
         if (outcome === 'accepted') {
           setDeferredPrompt(null);
@@ -47,7 +47,7 @@ export default function App() {
       }
     }
 
-    // Direct APK Download
+    // Direct APK Download Fallback
     const link = document.createElement('a');
     link.href = APK_URL;
     link.download = 'app-release.apk';
