@@ -19,7 +19,7 @@ export default function Hero({ onInstallClick, onOpenModal }) {
 
       {/* Main Hero Install Container */}
       <div className="hero-install-box">
-        <button 
+        <button
           onClick={() => onInstallClick("Hero Section")}
           className="gradient-btn main-install-btn"
         >
@@ -69,14 +69,14 @@ export default function Hero({ onInstallClick, onOpenModal }) {
 
       {/* Action Buttons */}
       <div className="hero-actions-grid">
-        <button 
+        <button
           onClick={() => onOpenModal("Charts", "Charts, results and betting are available only in the app")}
           className="action-btn"
         >
           <BarChart2 size={18} className="text-orange" />
           <span>CHARTS</span>
         </button>
-        <button 
+        <button
           onClick={() => onOpenModal("Play Now", "Charts, results and betting are available only in the app")}
           className="action-btn"
         >

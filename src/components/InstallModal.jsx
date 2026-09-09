@@ -24,7 +24,7 @@ export default function InstallModal({ isOpen, onClose, onInstall, title, messag
 
         {/* Modal Body */}
         <div className="modal-body">
-          <button 
+          <button
             onClick={() => onInstall("Modal")}
             className="gradient-btn modal-install-btn"
           >

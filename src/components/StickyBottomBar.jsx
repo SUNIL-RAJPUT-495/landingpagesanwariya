@@ -5,7 +5,7 @@ export default function StickyBottomBar({ onInstallClick }) {
   return (
     <div className="sticky-bottom-bar">
       <div className="sticky-bar-inner">
-        <button 
+        <button
           onClick={() => onInstallClick("Sticky Bottom Bar")}
           className="gradient-btn sticky-install-btn"
         >

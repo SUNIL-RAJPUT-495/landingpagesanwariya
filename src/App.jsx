@@ -8,14 +8,12 @@ import InstallModal from './components/InstallModal';
 import StickyBottomBar from './components/StickyBottomBar';
 import './index.css';
 
-const APK_URL = "/app-release.apk";
-
 export default function App() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [modalState, setModalState] = useState({
     isOpen: false,
-    title: 'Install The App',
-    message: 'Charts, results and betting are available only in the app'
+    title: 'Install SanwariyaBoss Web App',
+    message: 'https://sawariya.sanwariyaboss.fun/ ko apne mobile home screen par App ki tarah install karein.'
   });
 
   // Listen for PWA beforeinstallprompt
@@ -32,7 +30,7 @@ export default function App() {
     };
   }, []);
 
-  // Main install trigger (PWA prompt + APK download fallback)
+  // Main install trigger for PWA (Web App)
   const handleInstallApp = async (source) => {
     if (deferredPrompt) {
       try {
@@ -47,13 +45,12 @@ export default function App() {
       }
     }
 
-    // Direct APK Download Fallback
-    const link = document.createElement('a');
-    link.href = APK_URL;
-    link.download = 'app-release.apk';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open PWA Install Modal guide if native prompt isn't ready
+    setModalState({
+      isOpen: true,
+      title: 'Install SanwariyaBoss Web App',
+      message: 'Website https://sawariya.sanwariyaboss.fun/ ko Mobile Home Screen par install karein:'
+    });
   };
 
   const handleOpenModal = (title, message) => {
@@ -78,27 +75,27 @@ export default function App() {
   return (
     <div className="app-container">
       <Header />
-      
+
       <main>
-        <Hero 
+        <Hero
           onInstallClick={handleInstallApp}
           onOpenModal={handleOpenModal}
         />
-        
-        <MarketsList 
+
+        <MarketsList
           onMarketClick={handleMarketClick}
         />
-        
+
         <Instructions />
       </main>
 
       <Footer />
 
-      <StickyBottomBar 
+      <StickyBottomBar
         onInstallClick={handleInstallApp}
       />
 
-      <InstallModal 
+      <InstallModal
         isOpen={modalState.isOpen}
         onClose={handleCloseModal}
         onInstall={handleInstallApp}
